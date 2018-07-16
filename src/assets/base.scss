@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#app {
+  max-width: 370px;
+  margin: 100px auto;
+  border-radius: 4px;
+  border: 1px solid #f2f2f2;
+  box-shadow: 0 1px 8px rgba(#000, 0.05);
+}
+
+.counter {
+  padding: 10px;
+  border: 1px solid #f2f2f2;
+  border-left: none;
+  border-right: none;
+}
+
+.congratulations {
+  padding: 10px;
+  background: #4caf50;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.task {
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.highlight {
+  background: orange;
+  color: white;
+}
