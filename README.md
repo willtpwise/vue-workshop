@@ -2,20 +2,17 @@
 
 > A Vue.js worshop for Node Girls Sydney
 
-## Build Setup
+## What's included
+This is a fundamentals workshop for Vue.js. We'll be building a to do list which loads data from an API and renders it in Vue land.
 
-``` bash
-# install dependencies
-npm install
+* Component breakdown
+* Single file format
+* Data flow
+* Props and events
+* Repeaters (`v-for`)
 
-# serve with hot reload at localhost:8080
-npm run dev
+## Workshop prerequisites
+* [Node + NPM](https://nodejs.org/en/download/)
+* Basic understanding of HTML and JavaScript
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+> This is a work in progress. Stay tuned
