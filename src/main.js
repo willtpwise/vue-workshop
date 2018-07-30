@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 
 // Some base styles for the purpose of the workshop
-import '@/assets/base.scss'
+import '@/assets/base.css'
 
 Vue.config.productionTip = false
 
