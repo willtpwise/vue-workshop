@@ -17,10 +17,10 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Task from './components/Task'
 import Counter from './components/Counter'
 import Congratulations from './components/Congratulations'
-import ToDoItems from './assets/to-do.json'
 
 export default {
   components: {
@@ -31,7 +31,7 @@ export default {
 
   data () {
     return {
-      list: ToDoItems
+      list: []
     }
   },
 
@@ -54,7 +54,16 @@ export default {
       } else {
         item.done = true
       }
+    },
+
+    async fetchList () {
+      const response = await axios.get('/static/to-do.json')
+      this.list = response.data
     }
+  },
+
+  created () {
+    this.fetchList()
   }
 }
 </script>
