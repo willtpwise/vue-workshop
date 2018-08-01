@@ -40,3 +40,8 @@ html, body {
   background: orange;
   color: white;
 }
+
+.page-header {
+  padding: 20px;
+  text-align: center;
+}
