@@ -23,9 +23,7 @@ export default {
       }
       return count
     }
-
   }
-
 }
 </script>
 
