@@ -1,5 +1,9 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from "@vue/test-utils";
 import Counter from "../../../../src/components/Counter.vue";
+import Vuex from 'vuex'
+
+const localVue = createLocalVue();
+localVue.use(Vuex);
 
 describe('Counter.vue', () => {
     const wrapperMaker = (list) => {
