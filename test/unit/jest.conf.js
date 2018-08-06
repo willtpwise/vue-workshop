@@ -16,15 +16,7 @@ module.exports = {
   coverageDirectory: '<rootDir>/test/unit/coverage',
   collectCoverageFrom: [
     'src/**/*.{js,ts,vue}',
-    '!src/**/*.d.ts',
-    '!src/config.ts',
-    '!src/assets/**/*.ts',
-    '!src/setup/**/*.ts',
-    '!src/gql/**',
-    '!src/lang/**/*.ts',
-    '!src/store/apollo.ts',
-    '!src/store/index.ts',
-    '!src/main.ts',
+    '!src/main.js',
     '!src/router/index.ts',
     '!**/node_modules/**'
   ]

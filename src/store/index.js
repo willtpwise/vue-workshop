@@ -11,7 +11,7 @@ const toggle = (item) => {
   }
 }
 
-const store = new Vuex.Store({
+export const storeConfig = {
   state: {
     list: [],
   },
@@ -45,5 +45,6 @@ const store = new Vuex.Store({
       return data;
     }
   }
-})
-export default store;
+}
+
+export default new Vuex.Store(storeConfig);
