@@ -1,19 +1,19 @@
 <template>
-  <div class="task" :class="{ 'highlight': done }" @click="complete">
-    {{ name }}
+  <div class="task" :class="{ 'highlight': item.done }" @click="toggle">
+    {{ item.name }}
   </div>
 </template>
 
 <script>
+
 export default {
   props: [
-    'name',
-    'done'
+    'item'
   ],
 
   methods: {
-    complete () {
-      this.$emit('complete')
+    toggle () {
+      this.$store.commit('toggleItem', { item: this.item })
     }
   }
 }

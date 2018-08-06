@@ -1,6 +1,6 @@
 <template>
   <div class="counter">
-    Completed {{ done }} / {{ total }}
+    Completed {{ totalDone }} / {{ list.length }}
   </div>
 </template>
 
@@ -9,7 +9,23 @@ export default {
   props: [
     'total',
     'done'
-  ]
+  ],
+  computed: {
+    list() {
+      return this.$store.getters['todoList']
+    },
+    totalDone () {
+      let count = 0
+      for (let item of this.list) {
+        if (item.done) {
+          count ++
+        }
+      }
+      return count
+    }
+
+  }
+
 }
 </script>
 
