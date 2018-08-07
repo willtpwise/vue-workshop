@@ -1,6 +1,6 @@
 import { createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import { storeConfig } from "../../../../src/store";
+import store from "../../../../src/store";
 
 
 const localVue  = createLocalVue();
@@ -20,12 +20,6 @@ jest.mock('axios', () => {
     }
 })
 describe('store', () => {
-    let store;
-    beforeAll(() => {
-        // storeConfig.actions.fetchList = fetchList;
-        store = new Vuex.Store(storeConfig);
-    });
-
     it('should toggle correct item if toggleItem is called', async () => {
         const list = await store.dispatch('fetchList');
         store.commit('setList', { list })

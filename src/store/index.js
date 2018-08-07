@@ -11,7 +11,7 @@ const toggle = (item) => {
   }
 }
 
-export const storeConfig = {
+const storeConfig = {
   state: {
     list: [],
   },
