@@ -6,10 +6,6 @@
 
 <script>
 export default {
-  props: [
-    'total',
-    'done'
-  ],
   computed: {
     list() {
       return this.$store.getters['todoList']
