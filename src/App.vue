@@ -4,13 +4,14 @@
       <h1>To do list</h1>
     </header>
 
-    <congratulations v-if="totalDone === list.length"></congratulations>
+    <congratulations v-if="complete"></congratulations>
     <counter :done="totalDone" :total="list.length" v-else></counter>
 
     <task
       v-for="(item, idx) in list"
       :item="item"
-      :key="idx">
+      :key="idx"
+      @toggle-done="toggleDone">
     </task>
   </div>
 </template>
@@ -32,13 +33,17 @@ export default {
       return this.$store.getters['todoList'];
     },
     totalDone () {
-      return this.list.filter((item) => {
-        return !!item.done
-      }).length;
+      return this.$store.getters['doneCount']
+    },
+    complete() {
+      return this.totalDone === this.list.length
     }
   },
 
   methods: {
+    toggleDone({ item }) {
+      this.$store.commit('toggleItem', { item })
+    },
     async fetchList () {
       const list = await this.$store.dispatch('fetchList');
       this.$store.commit('setList', { list });

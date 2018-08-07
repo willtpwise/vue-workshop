@@ -18,6 +18,11 @@ const storeConfig = {
   getters: {
     todoList(state) {
       return state.list;
+    },
+    doneCount(state) {
+      return state.list.reduce((subtotal, task) => {
+        return subtotal + (task.done ? 1 : 0);
+      }, 0);
     }
   },
   mutations: {

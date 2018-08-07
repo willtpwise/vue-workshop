@@ -1,10 +1,4 @@
-import { createLocalVue } from "@vue/test-utils";
-import Vuex from "vuex";
 import store from "../../../../src/store";
-
-
-const localVue  = createLocalVue();
-localVue.use(Vuex)
 
 jest.mock('axios', () => {
     return {
@@ -38,5 +32,25 @@ describe('store', () => {
         store.commit('addItem', { item: test4 })
         expect(store.getters['todoList'][idx]).toEqual(test4);
         expect(store.getters['todoList'].length).toEqual(idx + 1);
+    })
+    it('should have correct doneCount', () => {
+        store.commit('setList', { list: [
+            { done: true, name: 'test' },
+            { done: true, name: 'test' },
+            { done: true, name: 'test' },
+        ]})
+        expect(store.getters['doneCount']).toEqual(3)
+        store.commit('setList', { list: [
+            { done: true, name: 'test' },
+            { done: false, name: 'test' },
+            { done: true, name: 'test' },
+        ]})
+        expect(store.getters['doneCount']).toEqual(2)
+        store.commit('setList', { list: [
+            { done: false, name: 'test' },
+            { done: false, name: 'test' },
+            { done: true, name: 'test' },
+        ]})
+        expect(store.getters['doneCount']).toEqual(1)
     })
 })

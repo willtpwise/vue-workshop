@@ -13,7 +13,7 @@ export default {
 
   methods: {
     toggle () {
-      this.$store.commit('toggleItem', { item: this.item })
+      this.$emit('toggle-done', { item: this.item });
     }
   }
 }

@@ -16,6 +16,9 @@ describe('App.vue', () => {
                 getters: {
                     todoList: () => {
                         return list
+                    },
+                    doneCount: () => {
+                        return list.length
                     }
                 },
                 mutations: {
@@ -33,18 +36,28 @@ describe('App.vue', () => {
         const wrapper = wrapperMaker([]);
         expect(wrapper.isVueInstance()).toBeTruthy();
     })
-    it('should have correct total done and list', () => {
-        const tasks = [{ done: true, name: 'test' }];
-        const wrapper = wrapperMaker(tasks);
-        const cm = wrapper.vm;
-        expect(cm.totalDone).toEqual(1);
-        expect(cm.list).toBe(tasks);
-    })
+    
     it('should have correct total done for no entry list', () => {
         const tasks = [];
         const wrapper = wrapperMaker(tasks);
         const cm = wrapper.vm;
         expect(cm.totalDone).toEqual(0);
         expect(cm.list).toBe(tasks);
+    })
+    it('should toggle the value of the correct task when clicked', () => {
+        const task0 = { done: true, name: 'test' };
+        const task1 = { done: false, name: 'test' };
+        const tasks = [task0, task1];
+        
+        const task0done = task0.done;
+        const task1done = task1.done;
+
+        const wrapper = wrapperMaker(tasks);
+        wrapper.vm.toggleDone({item: task0})
+        expect(task0).not.toEqual(task0done)
+
+        wrapper.vm.toggleDone({item: task1})
+        expect(task1).not.toEqual(task1done)
+        
     })
 })

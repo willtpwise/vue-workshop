@@ -1,45 +1,24 @@
-import { shallowMount, createLocalVue } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import Task from "../../../../src/components/Task.vue";
-import Vuex from 'vuex'
-
-const localVue = createLocalVue();
-localVue.use(Vuex);
 
 describe('Task.vue', () => {
-    const wrapperMaker = (list, item, toggler) => {
+    const wrapperMaker = (item) => {
         return shallowMount(Task, {
-            localVue,
-            store: new Vuex.Store({
-                state: {
-                    list,
-                },
-                getters: {
-                    todoList: () => {
-                        return list
-                    }
-                },
-                mutations: {
-                    setList: jest.fn(),
-                    toggleItem: toggler,
-                    addItem: jest.fn(),
-                },
-                actions: {
-                    fetchList: jest.fn()
-                },
-            }),
             propsData: {
                 item
             }
         });
     }
-    it('should call toggle in the store', () => {
-        const toggler = jest.fn();
+    it('should call emit the toggle-done with item', () => {
         const item = { done: false, name: 'test' }
-        const tasks = [item];
-        const wrapper = wrapperMaker(tasks, item, toggler);
-        const cm = wrapper.vm;
-        expect(toggler).not.toHaveBeenCalled()
-        cm.toggle()
-        expect(toggler).toHaveBeenCalled()
+        const wrapper = wrapperMaker(item);
+        expect(wrapper.isVueInstance()).toBeTruthy();
+
+        expect(wrapper.emitted('toggle-done')).toBeFalsy();
+        wrapper.vm.toggle();
+        const evt = wrapper.emitted('toggle-done');
+        expect(evt).toBeTruthy();
+        expect(evt[0][0].item).toEqual(item)
     })
+    
 })
