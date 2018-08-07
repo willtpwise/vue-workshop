@@ -5,7 +5,7 @@
     </header>
 
     <congratulations v-if="totalDone === list.length"></congratulations>
-    <counter v-else></counter>
+    <counter :done="totalDone" :total="list.length" v-else></counter>
 
     <task
       v-for="(item, idx) in list"

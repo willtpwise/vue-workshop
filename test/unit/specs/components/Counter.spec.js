@@ -6,82 +6,27 @@ const localVue = createLocalVue();
 localVue.use(Vuex);
 
 describe('Counter.vue', () => {
-    const wrapperMaker = (list) => {
+    const wrapperMaker = (done, total) => {
         return shallowMount(Counter, {
-            localVue,
-            store: new Vuex.Store({
-                state: {
-                    list,
-                },
-                getters: {
-                    todoList: () => {
-                        return list
-                    }
-                },
-                mutations: {
-                    setList: jest.fn(),
-                    toggleItem: jest.fn(),
-                    addItem: jest.fn(),
-                },
-                actions: {
-                    fetchList: jest.fn()
-                },
-            })
+            propsData: { done, total }
         });
     }
-
-    it('should return the list', () => {
-        const tasks = [];
-        const wrapper = wrapperMaker(tasks);
-        const cm = wrapper.vm;
-        expect(cm.list).toEqual(tasks)
+    describe('correct percentage', () => {
+        it('should be correct for 0 done of 1', () => {
+            const wrapper = wrapperMaker(0, 1)
+            expect(wrapper.vm.percent).toEqual(0);
+        })
+        it('should be correct for 1 done of 2', () => {
+            const wrapper = wrapperMaker(1, 2)
+            expect(wrapper.vm.percent).toEqual(50);
+        })
+        it('should be correct for 3 done of 4', () => {
+            const wrapper = wrapperMaker(3, 4)
+            expect(wrapper.vm.percent).toEqual(75);
+        })
     })
-    it('should have the correct total done for task list', () => {
-        const tasks = [
-            {
-                done: true,
-                name: 'asdasd'
-            },
-            {
-                done: false,
-                name: 'not done'
-            },
-        ];
-        const wrapper = wrapperMaker(tasks);
-        const cm = wrapper.vm;
-        expect(cm.list).toEqual(tasks)
-        expect(cm.totalDone).toEqual(1)
-    })
-    it('should have the correct total done for task list', () => {
-        const tasks = [
-            {
-                done: false,
-                name: 'asdasd'
-            },
-            {
-                done: false,
-                name: 'not done'
-            },
-        ];
-        const wrapper = wrapperMaker(tasks);
-        const cm = wrapper.vm;
-        expect(cm.list).toEqual(tasks)
-        expect(cm.totalDone).toEqual(0)
-    })
-    it('should have the correct total done for task list', () => {
-        const tasks = [
-            {
-                done: true,
-                name: 'done'
-            },
-            {
-                done: true,
-                name: 'done2'
-            },
-        ];
-        const wrapper = wrapperMaker(tasks);
-        const cm = wrapper.vm;
-        expect(cm.list).toEqual(tasks)
-        expect(cm.totalDone).toEqual(2)
+    it('should not divide by 0', () => {
+        const wrapper = wrapperMaker(0, 0)
+        expect(wrapper.vm.percent).toEqual(0);
     })
 })

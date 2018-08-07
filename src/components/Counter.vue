@@ -1,23 +1,19 @@
 <template>
   <div class="counter">
-    Completed {{ totalDone }} / {{ list.length }}
+    Completed {{ done }} / {{ total }} ({{ percent }}%)
   </div>
 </template>
 
 <script>
 export default {
+  props: [
+    'done',
+    'total',
+  ],
   computed: {
-    list() {
-      return this.$store.getters['todoList']
-    },
-    totalDone () {
-      let count = 0
-      for (let item of this.list) {
-        if (item.done) {
-          count ++
-        }
-      }
-      return count
+    percent() {
+      if (!this.total) { return 0; }
+      return Math.round(100 * (this.done / this.total))
     }
   }
 }
