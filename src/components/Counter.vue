@@ -1,6 +1,6 @@
 <template>
   <div class="counter">
-    Completed {{ totalDone }} / {{ list.length }}
+    Completed {{ totalDone }} / {{ list.length }} ({{ percent }}%)
   </div>
 </template>
 
@@ -18,6 +18,10 @@ export default {
         }
       }
       return count
+    },
+    percent() {
+      if (!this.list || !this.list.length) { return 0; }
+      return Math.round(100 * (this.totalDone / this.list.length));
     }
   }
 }
