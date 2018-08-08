@@ -40,12 +40,10 @@ describe('store', () => {
             { done: true, name: 'test' },
         ]})
         expect(store.getters['doneCount']).toEqual(3)
-        store.commit('setList', { list: [
-            { done: true, name: 'test' },
-            { done: false, name: 'test' },
-            { done: true, name: 'test' },
-        ]})
-        expect(store.getters['doneCount']).toEqual(2)
+        
+        store.commit('setList', { list: []})
+        expect(store.getters['doneCount']).toEqual(0)
+        
         store.commit('setList', { list: [
             { done: false, name: 'test' },
             { done: false, name: 'test' },
