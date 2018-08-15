@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="sports-field">
+      <score-board :score="totals.score" :miss="totals.miss"></score-board>
       <img
         class="soccer-goal"
         src="/static/soccer-goal.png"
@@ -16,10 +17,16 @@
 </template>
 
 <script>
+import ScoreBoard from './components/ScoreBoard'
+
 export default {
   data () {
     return {
-      status: ''
+      status: '',
+      totals: {
+        score: 0,
+        miss: 0
+      }
     }
   },
 
@@ -43,6 +50,16 @@ export default {
         this.status = ''
       }, 500)
     }
+  },
+
+  watch: {
+    status () {
+      this.totals[this.status] ++
+    }
+  },
+
+  components: {
+    ScoreBoard
   }
 }
 </script>
