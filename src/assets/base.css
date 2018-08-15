@@ -1,3 +1,8 @@
+/**
+ These are base styles used for the Vue Workshop, generally most of these would
+ be stored in their respective component's <style> block.
+**/
+
 html, body {
   margin: 0;
   padding: 0;
@@ -8,40 +13,37 @@ html, body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 370px;
-  margin: 100px auto;
-  border-radius: 4px;
-  border: 1px solid #f2f2f2;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  height: 100vh;
 }
 
-.counter {
-  padding: 10px;
-  border: 1px solid #f2f2f2;
-  border-left: none;
-  border-right: none;
+.sports-field {
+  width: 100%;
+  max-width: 400px;
+  margin: auto auto 20px auto;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.congratulations {
-  padding: 10px;
-  background: #4caf50;
-  color: white;
-  border: 1px solid transparent;
+.soccer-goal {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
 }
 
-.task {
-  padding: 8px;
+.soccer-ball {
+  width: 100px;
+  transition: transform 0.2s ease-out;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 1px;
 }
 
-.highlight {
-  background: orange;
-  color: white;
+.soccer-ball.score {
+  transform: translate(97px, -136px) scale(0.6) rotate(180deg);
 }
 
-.page-header {
-  padding: 20px;
-  text-align: center;
+.soccer-ball.miss {
+  transform: translate(-17px, -175px) scale(0.2) rotate(-180deg);
+}
+
+.soccer-ball.reset {
+  visibility: hidden;
 }
