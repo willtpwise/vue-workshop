@@ -1,8 +1,17 @@
 <template>
   <div id="app">
-    <header class="page-title">
-      <h1>{{ heading }}</h1>
-    </header>
+    <div class="sports-field">
+      <img
+        class="soccer-goal"
+        src="/static/soccer-goal.png"
+        alt="Soccer goal">
+      <img
+        class="soccer-ball"
+        :class="status"
+        src="/static/soccer-ball.png"
+        alt="Soccer ball"
+        @click="shoot">
+    </div>
   </div>
 </template>
 
@@ -10,20 +19,33 @@
 export default {
   data () {
     return {
-      heading: 'To do list'
+      status: ''
     }
   },
 
-  created () {
-    console.log(this.heading)
+  methods: {
+    shoot () {
+      const results = [
+        'miss',
+        'score'
+      ]
+
+      this.status = results[Math.floor(Math.random() * results.length)]
+
+      setTimeout(() => {
+        this.reset()
+      }, 800)
+    },
+
+    reset () {
+      this.status = 'reset'
+      setTimeout(() => {
+        this.status = ''
+      }, 500)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

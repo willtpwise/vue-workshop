@@ -1,9 +1,9 @@
 # vue-workshop
 
-> A Vue.js worshop for Node Girls Sydney
+> A Vue.js workshop for Node Girls Sydney
 
 ## What's included
-This is a fundamentals workshop for Vue.js. We'll be building a to do list which loads data from an API and renders it in Vue land.
+This is a fundamentals workshop for Vue.js. We'll be building a soccer game and focusing on some Vue essentials:
 
 * Component breakdown
 * Single file format
@@ -14,5 +14,3 @@ This is a fundamentals workshop for Vue.js. We'll be building a to do list which
 ## Workshop prerequisites
 * [Node + NPM](https://nodejs.org/en/download/)
 * Basic understanding of HTML and JavaScript
-
-> This is a work in progress. Stay tuned
