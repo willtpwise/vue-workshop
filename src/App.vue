@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <div class="sports-field">
+      <img
+        class="soccer-goal"
+        src="/static/soccer-goal.png"
+        alt="Soccer goal">
+      <img
+        class="soccer-ball"
+        :class="status"
+        src="/static/soccer-ball.png"
+        alt="Soccer ball"
+        @click="shoot">
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data () {
+    return {
+      status: ''
+    }
+  },
+
+  methods: {
+    shoot () {
+      const results = [
+        'miss',
+        'score'
+      ]
+
+      this.status = results[Math.floor(Math.random() * results.length)]
+
+      setTimeout(() => {
+        this.reset()
+      }, 800)
+    },
+
+    reset () {
+      this.status = 'reset'
+      setTimeout(() => {
+        this.status = ''
+      }, 500)
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
