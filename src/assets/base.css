@@ -21,6 +21,10 @@ html, body {
   height: 100vh;
 }
 
+h1 {
+  text-align: center;
+}
+
 .sports-field {
   width: 100%;
   max-width: 400px;

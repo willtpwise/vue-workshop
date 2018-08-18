@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="sports-field">
+      <h1>{{ title }}</h1>
       <img
         class="soccer-goal"
         src="/static/soccer-goal.png"
@@ -19,7 +20,8 @@
 export default {
   data () {
     return {
-      status: ''
+      status: '',
+      title: "Let's play"
     }
   },
 
