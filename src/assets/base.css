@@ -9,6 +9,10 @@ html, body {
   width: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -46,4 +50,22 @@ html, body {
 
 .soccer-ball.reset {
   visibility: hidden;
+}
+
+.board {
+
+}
+
+.board > * {
+  padding: 15px;
+  text-align: center;
+}
+
+.board-score {
+  font-weight: bold;
+}
+
+.board-total,
+.board-miss {
+
 }
